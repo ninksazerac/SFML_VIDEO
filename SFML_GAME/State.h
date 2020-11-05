@@ -30,10 +30,8 @@ public:
 	virtual ~State();
 
 	const bool& getQuit() const;
-
-	virtual void checkForQuit();
+	void endState();
 	
-	virtual void endState() = 0;
 	virtual void updateMousePosition();
 	virtual void updateInput(const float& dt) = 0;
 	virtual void update(const float& dt) = 0;
