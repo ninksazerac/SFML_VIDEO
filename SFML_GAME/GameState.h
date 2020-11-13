@@ -1,18 +1,25 @@
+
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
 
 
 #include "State.h"
+#include "PauseMenu.h"
 
 class GameState :
     public State
 {
 private:
-    Entity player;
+    PauseMenu pmenu;
+    
+    Player* player;
+    sf::Texture texture;
 
     //Functions
     void initKeybinds();
+    void initTextures();
+    void initPlayers();
 
 public:
     GameState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);

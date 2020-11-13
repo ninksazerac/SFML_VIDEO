@@ -15,7 +15,7 @@ void MainMenuState::initBackground()
 		)
 	);
 
-	if(!this->backgroundTexture.loadFromFile("Resources/Images/Backgrounds/bg1.jpg"))
+	if(!this->backgroundTexture.loadFromFile("Resources/Images/Backgrounds/mainmenustatebg.png"))
 	{
 		throw "ERROR::MAINMENUSTATE::FAILED_TO_LOAD_BACKGROUND_TEXTURE";
 	}
@@ -49,19 +49,23 @@ void MainMenuState::initKeybinds()
 
 void MainMenuState::initButtons()
 {
-	this->buttons["GAME_STATE"] = new Button(841, 321, 250, 80,
+	this->buttons["GAME_STATE"] = new Button(260, 225, 250, 80,
 		&this->font, "New Gamer",
 		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
 
-	this->buttons["SCORE"] = new Button(841, 452, 250, 80,
+	this->buttons["SCORE"] = new Button(260, 356, 250, 80,
 		&this->font, "Score",
 		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
 
-	this->buttons["SETTINGS"] = new Button(841, 583, 250, 80,
+	this->buttons["SETTINGS"] = new Button(260, 487, 250, 80,
 		&this->font, "Settings",
 		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
 
-	this->buttons["EXIT_STATE"] = new Button(841, 714, 250, 80,
+	this->buttons["EDITOR_STATE"] = new Button(260, 618, 250, 80,
+		&this->font, "Editor",
+		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
+
+	this->buttons["EXIT_STATE"] = new Button(260, 749, 250, 80,
 		&this->font, "Quit",
 		sf::Color(100, 100, 100, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
 }
@@ -109,6 +113,14 @@ void MainMenuState::updateButtons()
 		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
 	}
 
+	//Settings
+
+	//Editor
+	if (this->buttons["EDITOR_STATE"]->isPressed())
+	{
+		this->states->push(new EditorState(this->window, this->supportedKeys, this->states));
+	}
+
 	//Quit the game
 	if (this->buttons["EXIT_STATE"]->isPressed())
 	{
@@ -144,7 +156,7 @@ void MainMenuState::render(sf::RenderTarget* target)
 
 
 	//REMOVE LATER!!!
-	/*sf::Text mouseText;
+	sf::Text mouseText;
 	mouseText.setPosition(this->mousePosView.x, this->mousePosView.y - 50);
 	mouseText.setFont(this->font);
 	mouseText.setCharacterSize(15);
@@ -152,6 +164,6 @@ void MainMenuState::render(sf::RenderTarget* target)
 	ss << this->mousePosView.x << " " << this->mousePosView.y;
 	mouseText.setString(ss.str());
 
-	target->draw(mouseText);*/
+	target->draw(mouseText);
 
 }

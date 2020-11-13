@@ -1,7 +1,7 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include "Entity.h"
+#include "Player.h"
 
 class State
 {
@@ -15,13 +15,14 @@ protected:
 	std::map<std::string, int>* supportedKeys;
 	std::map<std::string, int> keybinds;
 	bool quit;
+	bool pauesed;
 
 	sf::Vector2i mousePosScreen;
 	sf::Vector2i mousePosWindow;
 	sf::Vector2f mousePosView;
-
+	
 	//Resources
-	std::vector<sf::Texture> textures;
+	std::map<std::string, sf::Texture> textures;
 
 	//Functions
 	virtual void initKeybinds() = 0;
@@ -31,6 +32,8 @@ public:
 
 	const bool& getQuit() const;
 	void endState();
+	void pauseState();
+	void unpauseState();
 	
 	virtual void updateMousePosition();
 	virtual void updateInput(const float& dt) = 0;
