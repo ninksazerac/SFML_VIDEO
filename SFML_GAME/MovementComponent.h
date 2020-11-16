@@ -19,6 +19,7 @@
 class MovementComponent
 {
 private:
+
 	sf::Sprite& sprite;
 
 
@@ -39,6 +40,8 @@ public:
 	const sf::Vector2f& getVelocity() const;
 
 	//Functions
+	const bool idle() const;
+
 	void move(const float dir_x, const float dir_y, const float& dt);
 	void update(const float& dt);
 };
