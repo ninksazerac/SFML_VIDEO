@@ -12,7 +12,8 @@ class GameState :
 {
 private:
     PauseMenu pmenu;
-    
+
+
     Player* player;
     sf::Texture texture;
 

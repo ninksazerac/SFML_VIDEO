@@ -35,6 +35,6 @@ void PauseMenu::render(sf::RenderTarget& target)
 
 	for (auto& i : this->buttons)
 	{
-		i.second->render(&target);
+		i.second->render(target);
 	}
 }

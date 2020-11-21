@@ -27,7 +27,7 @@ void GameState::initTextures()
 
 void GameState::initPlayers()
 {
-	this->player = new Player(0, 0, this->textures["PLAYER_SHEET"]);
+	this->player = new Player(500, 450, this->textures["PLAYER_SHEET"]);
 }
 
 //Constructors / Destructors
@@ -93,9 +93,11 @@ void GameState::render(sf::RenderTarget* target)
 	if (!target)
 		target = this->window;
 
-		this->player->render(target);
+		this->player->render(*target);
 		if (this->pauesed)//Pause menu render
 		{
 			this->pmenu.render(*target);
 	}
+
+		
 }

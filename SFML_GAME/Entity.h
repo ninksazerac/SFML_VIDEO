@@ -1,6 +1,7 @@
 #ifndef  ENTITY_H
 #define ENTITY_H
 
+#include "HitboxComponent.h"
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
 
@@ -14,8 +15,9 @@ protected:
 
 	sf::Sprite sprite;
 
+	HitboxComponent* hitboxcomponent;
 	MovementComponent* movementComponent;
-	AnimationComponent* animatioComponent;
+	AnimationComponent* animationComponent;
 
 public:
 	Entity();
@@ -23,6 +25,7 @@ public:
 
 	//Component functions
 	void setTexture(sf::Texture& texture);
+	void createHitboxComponent(sf::Sprite& sprite, float offset_x, float offset_y, float width, float height);
 	void createMovementComponent(const float maxVelocity, const float accelerarion, const float deceleration);
 	void createAnimationComponent(sf::Texture& texture_sheet);
 
@@ -32,7 +35,7 @@ public:
 
 
 	virtual void update(const float& dt);
-	virtual void render(sf::RenderTarget* target);
+	virtual void render(sf::RenderTarget& target);
 };
 #endif // ! ENTITY_H
 
